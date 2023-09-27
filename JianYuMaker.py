@@ -24,7 +24,7 @@ def jianyu(inputSTR):
                     jianyu_result = jianyu_result + resultDICT[i][j]['text'][0] + resultDICT[i][j]['text'][2]
                     break
             else:
-                if resultDICT[i][j]['pos'] in ['CLAUSE_AnotAQ', 'MODIFIER', 'ENTITY_DetPhrase', 'DegreeP', 'TIME_justtime']:
+                if resultDICT[i][j]['pos'] in ['CLAUSE_AnotAQ', 'MODIFIER', 'ENTITY_DetPhrase', 'DegreeP', 'TIME_justtime', 'ENTITY_classifier']:
                     jianyu_result = jianyu_result + resultDICT[i][j]['text']
                     
                 else:
@@ -33,11 +33,13 @@ def jianyu(inputSTR):
                             jianyu_result = jianyu_result + resultDICT[i][j]['text']
                         elif 'ACTION' in resultDICT[i][j]['pos']:
                             jianyu_result = jianyu_result + resultDICT[i][j]['text']
+                        else:
+                            jianyu_result = jianyu_result + resultDICT[i][j]['text'][0]
                             
                     else:
                         jianyu_result = jianyu_result + resultDICT[i][j]['text'][0]
             
-    print ("\n" + jianyu_result + "\n")
+    print ("\n" + jianyu_result + " (" + inputSTR + ")" +"\n")
     
 
 #程式進入點
