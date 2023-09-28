@@ -9,13 +9,18 @@ with open("account.info", encoding="utf-8") as f:
     accountDICT = json.load(f)
 articut = Articut(username=accountDICT["username"], apikey=accountDICT["api_key"])
 
+with open("userDefined.json", encoding="utf-8") as userdefinedDICT:
+    userdefined = json.load(userdefinedDICT)
+
 #簡語化函數
 def jianyu(inputSTR):
+    #initialization
+    resultDICT = []
     jianyu_result = ""
     
-    resultDICT= articut.parse(inputSTR, level="lv2")['result_obj']
+    resultDICT= articut.parse(inputSTR, level="lv2", userDefinedDictFILE=userdefined)['result_obj']
     
-    
+    #four_character_words 
     if len(inputSTR) == 4:
         jianyu_result += inputSTR[0] + inputSTR[2]
     
@@ -27,7 +32,6 @@ def jianyu(inputSTR):
                     if (len(resultDICT[i][j]['text']) == 4):
                         jianyu_result += resultDICT[i][j]['text'][0] + resultDICT[i][j]['text'][2]
                         break
-                
                 else:
                     if resultDICT[i][j]['pos'] in ['CLAUSE_AnotAQ', 'MODIFIER', 'ENTITY_DetPhrase', 'DegreeP', 'TIME_justtime', 'ENTITY_classifier']:
                         jianyu_result += resultDICT[i][j]['text']
@@ -51,7 +55,7 @@ def jianyu(inputSTR):
     return jianyu_result
 
 
-#程式進入點
+#test程式進入點
 if __name__ == "__main__":
     resultDICT = []
     while True:
