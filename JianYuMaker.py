@@ -16,31 +16,40 @@ def jianyu(inputSTR):
     resultDICT= articut.parse(inputSTR, level="lv2")['result_obj']
     
     
-    for i in range(len(resultDICT)):
-        
-        for j in range(len(resultDICT[i])):
-            if (len(resultDICT[i])) == 1:
-                if (len(resultDICT[i][j]['text']) == 4):
-                    jianyu_result = jianyu_result + resultDICT[i][j]['text'][0] + resultDICT[i][j]['text'][2]
-                    break
-            else:
-                if resultDICT[i][j]['pos'] in ['CLAUSE_AnotAQ', 'MODIFIER', 'ENTITY_DetPhrase', 'DegreeP', 'TIME_justtime', 'ENTITY_classifier']:
-                    jianyu_result = jianyu_result + resultDICT[i][j]['text']
-                    
-                else:
-                    if j == 0:
-                        if 'ENTITY' in resultDICT[i][j]['pos']:
-                            jianyu_result = jianyu_result + resultDICT[i][j]['text']
-                        elif 'ACTION' in resultDICT[i][j]['pos']:
-                            jianyu_result = jianyu_result + resultDICT[i][j]['text']
-                        else:
-                            jianyu_result = jianyu_result + resultDICT[i][j]['text'][0]
-                            
-                    else:
-                        jianyu_result = jianyu_result + resultDICT[i][j]['text'][0]
-            
-    print ("\n" + jianyu_result + " (" + inputSTR + ")" +"\n")
+    if len(inputSTR) == 4:
+        jianyu_result += inputSTR[0] + inputSTR[2]
     
+    else:
+        for i in range(len(resultDICT)):
+            
+            for j in range(len(resultDICT[i])):
+                if (len(resultDICT[i])) == 1:
+                    if (len(resultDICT[i][j]['text']) == 4):
+                        jianyu_result += resultDICT[i][j]['text'][0] + resultDICT[i][j]['text'][2]
+                        break
+                
+                else:
+                    if resultDICT[i][j]['pos'] in ['CLAUSE_AnotAQ', 'MODIFIER', 'ENTITY_DetPhrase', 'DegreeP', 'TIME_justtime', 'ENTITY_classifier']:
+                        jianyu_result += resultDICT[i][j]['text']
+                        
+                    else:
+                        if j == 0:
+                            if 'ENTITY' in resultDICT[i][j]['pos']:
+                                if (len(resultDICT[i])) == 2:
+                                    jianyu_result += resultDICT[i][j]['text'][0]
+                                else:
+                                    jianyu_result += resultDICT[i][j]['text']
+                                    
+                            elif 'ACTION' in resultDICT[i][j]['pos']:
+                                jianyu_result += resultDICT[i][j]['text']
+                            else:
+                                jianyu_result += resultDICT[i][j]['text'][0]
+                                
+                        else:
+                            jianyu_result += resultDICT[i][j]['text'][0]
+                            
+    return jianyu_result
+
 
 #程式進入點
 if __name__ == "__main__":
@@ -48,6 +57,9 @@ if __name__ == "__main__":
     while True:
         inputSTR = input("請輸入你要轉換成簡語的句子:\n")
         
-        jianyu(inputSTR)
+        jianyu_resultSTR = jianyu(inputSTR)
+        
+        print ("\n" + jianyu_resultSTR + " (" + inputSTR + ")" +"\n")
+        
     
         
