@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport", content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <title>JianYu Maker</title>
 </head>
 <body>
-    <div>
-        <h1>Jian Yu Maker</h1>
-    <form method="post">
-        <label for="user_input">輸入任意四字詞語:</label>
-        <input type="text" id="user_input" name="user_input" required>
-        <button type="submit">Submit</button>
-    </form>
+    <div id="main">
+        <div id="name">
+            <a href="/">
+                <span id="title">簡語產生器</span>
+            </a>
+        </div>
+        <form id="input", method="post">
+            <br>
+            <label for="user_input">輸入任意四字詞語:</label>
+            <input type="text" id="user_input" name="user_input" required>
+            <br>
+            <input type="submit" class="button" name="submit" value="產生簡語!">
+        </form>
+        <div id="bottom_text">
+            <span id="credit">By Simon HS@2024</span>
+        </div>
     </div>
-    <div><h3>By Simon HS</h3></div>
+
 </body>
 </html>
