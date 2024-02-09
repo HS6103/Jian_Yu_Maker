@@ -9,21 +9,33 @@
 <body>
     <div id="main">
         <div id="name">
-            <a href="/">
-                <span id="title">簡語產生器</span>
-            </a>
+            <span id="title">簡語產生器</span>
         </div>
         <form id="input", method="post">
             <br>
             <label for="user_input">輸入任意四字詞語:</label>
             <input type="text" id="user_input" name="user_input" required>
             <br>
-            <input type="submit" class="button" name="submit" value="產生簡語!">
+            <input type="submit" class="button" name="submit" value="產生簡語!" onclick="jianyu()">
         </form>
+        <div id="result">
+            <br>
+            <p>你的簡語結果是: </p>
+        </div>
         <div id="bottom_text">
-            <span id="credit">By Simon HS@2024</span>
+            <span id="credit">By <a href="https://github.com/HS6103">Simon HS.</a> @2024</span>
         </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        function jianyu(){
+            $.ajax({
+                type: "POST",
+                url: "{{url_for('get_result')}}",
+                data: ""
+            })
+        }
+    </script>
+      
 </body>
 </html>
