@@ -38,8 +38,8 @@
                     success: function (response) {
                         $('#result').text('Processed String: ' + response.result);
                     },
-                    error: function () {
-                        $('#result').text('Error processing string.');
+                    error: function (req, textStatus, errorThrown) {
+                        $('#result').text('Error processing string.'+ textStatus+' ' +errorThrown);
                     }
                 });
             });
