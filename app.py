@@ -10,8 +10,9 @@ def index():
 @app.route("/get_result", methods=["POST"] )
 def get_result():
     if request.method == "POST":
+        resultSTR == ""
         user_input = request.form["user_input"]
-        resultSTR = jianyu(user_input)
+        resultSTR = user_input[0] + user_input[2]
     return jsonify({'result': resultSTR})    
     
 
