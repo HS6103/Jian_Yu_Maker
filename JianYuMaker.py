@@ -4,7 +4,6 @@
 import json
 from ArticutAPI import Articut
 
-
 with open("account.info", encoding="utf-8") as f:
     accountDICT = json.load(f)
 articut = Articut(username=accountDICT["username"], apikey=accountDICT["api_key"])

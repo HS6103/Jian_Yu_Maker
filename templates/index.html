@@ -16,26 +16,34 @@
             <label for="user_input">輸入任意四字詞語:</label>
             <input type="text" id="user_input" name="user_input" required>
             <br>
-            <input type="submit" class="button" name="submit" value="產生簡語!" onclick="jianyu()">
+            <input type="submit" class="button" name="submit" value="產生簡語!">
         </form>
-        <div id="result">
-            <br>
-            <p>你的簡語結果是: </p>
-        </div>
+        <div id="result"></div>
         <div id="bottom_text">
             <span id="credit">By <a href="https://github.com/HS6103">Simon HS.</a> @2024</span>
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script>
-        function jianyu(){
-            $.ajax({
-                type: "POST",
-                url: "{{url_for('get_result')}}",
-                data: ""
-            })
-        }
-    </script>
-      
+        $(document).ready(function () {
+            $('#input').submit(function (event) {
+                event.preventDefault();
+                var inputString = $('#user_input').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/get_result',
+                    contentType: 'application/json',
+                    data: JSON.stringify({ input_string: inputString }),
+                    success: function (response) {
+                        $('#result').text('Processed String: ' + response.result);
+                    },
+                    error: function () {
+                        $('#result').text('Error processing string.');
+                    }
+                });
+            });
+        });
+    </script>      
 </body>
 </html>
