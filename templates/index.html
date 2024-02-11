@@ -36,7 +36,7 @@
                     url: '/get_result',
                     data: ({ input_string: inputString }),
                     success: function (response) {
-                        $('#result').text(response);
+                        $('#result').text(response.mutated_string);
                     },
                     error: function (req, textStatus, errorThrown) {
                         $('#result').text('Error processing string.'+ textStatus+' ' +errorThrown);
