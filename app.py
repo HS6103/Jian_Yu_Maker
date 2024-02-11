@@ -3,17 +3,18 @@ from JianYuMaker import jianyu
 
 app = Flask(__name__)
 
-@app.route("/", methods=["POST"] )
+def jian_string(inputSTR):
+    return jianyu(inputSTR)
+
+@app.route("/", methods=['GET','POST'])
 def index():
     return render_template("index.html")
 
-@app.route('/get_result', methods=["POST"] )
+@app.route('/get_result', methods=['GET', 'POST'] )
 def get_result():
-    if request.method == "POST":
-        user_input = request.form["user_input"]
-        resultSTR = user_input[0] + user_input[2]
-    return jsonify({'result': resultSTR})    
-    
+    user_input = request.form["user_input"]
+    result = jian_string(user_input)
+    return result
 
 if __name__ == "__main__":
     app.run(debug=True)

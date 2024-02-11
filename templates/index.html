@@ -24,6 +24,7 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $('#input').submit(function (event) {
@@ -33,10 +34,9 @@
                 $.ajax({
                     type: 'POST',
                     url: '/get_result',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ input_string: inputString }),
+                    data: ({ input_string: inputString }),
                     success: function (response) {
-                        $('#result').text('Processed String: ' + response.result);
+                        $('#result').text(response);
                     },
                     error: function (req, textStatus, errorThrown) {
                         $('#result').text('Error processing string.'+ textStatus+' ' +errorThrown);
