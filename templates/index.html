@@ -33,7 +33,8 @@
                 $.ajax({
                     type: 'POST',
                     url: '/get_result',
-                    data: ({ input_string: inputString }),
+                    contentType: 'application/json',
+                    data: JSON.stringify({ inputString: inputString }),
                     success: function (response) {
                         $('#result').text(response.mutated_string);
                     },

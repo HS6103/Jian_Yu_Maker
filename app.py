@@ -12,7 +12,7 @@ def index():
 
 @app.route('/get_result', methods=['GET', 'POST'] )
 def get_result():
-    user_input = request.form["user_input"]
+    user_input = request.get_json["user_input"]
     result = jian_string(user_input)
     return jsonify(mutated_string=result)
 
