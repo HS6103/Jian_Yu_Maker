@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport", content="width=device-width, initial-scale=1.0">
@@ -28,7 +27,7 @@
         $(function() {
           $('a#process_input').bind('click', function() {
             $.post('/', {  
-              user_input: $('textarea[name="user_input"]').val(),
+              user_input: $('#user_input').val(),
             }, function(data) {
               $('#result').text(data.result);
             });
