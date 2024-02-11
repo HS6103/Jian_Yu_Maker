@@ -15,7 +15,7 @@
             <label for="user_input">輸入任意四字詞語:</label>
             <input type="text" id="user_input" name="user_input" required>
             <br>
-            <input type="submit" class="button" name="submit" value="產生簡語!">
+            <a href=# id=process_input><button class='btn btn-default'>Submit</button></a>
         </form>
         <div id="result"></div>
         <div id="bottom_text">
@@ -24,26 +24,17 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $('#input').submit(function (event) {
-                event.preventDefault();
-                var inputString = $('#user_input').val();
-
-                $.ajax({
-                    type: 'POST',
-                    url: '/get_result',
-                    contentType: 'application/json',
-                    data: JSON.stringify({ inputString: inputString }),
-                    success: function (response) {
-                        $('#result').text(response.mutated_string);
-                    },
-                    error: function (req, textStatus, errorThrown) {
-                        $('#result').text('Error processing string.'+ textStatus+' ' +errorThrown);
-                    }
-                });
+    <script type=text/javascript>
+        $(function() {
+          $('a#process_input').bind('click', function() {
+            $.post('/', {  
+              user_input: $('textarea[name="user_input"]').val(),
+            }, function(data) {
+              $('#result').text(data.result);
             });
+            return false;
+          });
         });
-    </script>      
+    </script>
 </body>
 </html>
