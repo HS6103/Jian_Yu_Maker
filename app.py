@@ -14,7 +14,7 @@ def index():
 def get_result():
     user_input = request.form["user_input"]
     result = jian_string(user_input)
-    return result
+    return jsonify(mutated_string=result)
 
 if __name__ == "__main__":
     app.run(debug=True)
