@@ -18,13 +18,16 @@
             <br>
             <a href=# id=process_input><button class='btn btn-default'>Submit</button></a>
         </form>
-        <div id="result">你的簡語結果是:</div>
+        <div id="result_label">
+          <span>你的簡語結果是:</span>
+        </div>
+        <div id="result"></div>
         <div id="bottom_text">
             <span id="credit">By <a href="https://github.com/HS6103">Simon HS.</a> @2024</span>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script type=text/javascript>
         $(function() {
           $('a#process_input').bind('click', function() {
