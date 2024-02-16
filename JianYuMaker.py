@@ -16,7 +16,7 @@ def jianyu(inputSTR):
     #初始化
     jianyu_result = ""
     
-    if len(inputSTR!=4):
+    if len(inputSTR) != 4:
         jianyu_result += "請輸入四字詞語!"
     else:
         jianyu_result += inputSTR[0] + inputSTR[2]
