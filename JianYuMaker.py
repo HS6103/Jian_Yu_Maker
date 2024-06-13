@@ -2,17 +2,17 @@
 # -*- coding:utf-8 -*-
 
 import json
+import os
 from ArticutAPI import Articut
 
-with open("account.info", encoding="utf-8") as f:
-    accountDICT = json.load(f)
-articut = Articut(username=accountDICT["username"], apikey=accountDICT["api_key"])
 
 with open("userDefined.json", encoding="utf-8") as userdefinedDICT:
     userdefined = json.load(userdefinedDICT)
 
 #簡語化函數
 def jianyu(inputSTR):
+    #articut = Articut(username=os.environ.get("loki_username"), apikey=os.environ.get("articut_key"))
+    
     #初始化
     jianyu_result = ""
     

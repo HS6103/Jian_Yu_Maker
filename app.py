@@ -1,17 +1,16 @@
+import os
 from flask import Flask, request, render_template, jsonify
 from JianYuMaker import jianyu
 
 app = Flask(__name__)
 
-def jian_string(inputSTR):
-    return jianyu(inputSTR)
-
 @app.route("/", methods=['GET','POST'])
 def index():
     if request.method == 'POST':
         user_input = request.form.get('user_input')
+        
         if user_input:
-            result = jian_string(user_input)
+            result = jianyu(user_input)
             return jsonify(result=result)
         else:
             return jsonify(result='Input needed')        
@@ -19,4 +18,5 @@ def index():
     return render_template("index.html")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
