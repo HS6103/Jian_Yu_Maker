@@ -4,9 +4,9 @@
 
 ## Link
 
-[簡語產生器](https://jian-yu-maker.onrender.com/)
+[簡語產生器](https://jianyumaker-6ad5dc3a8bf4.herokuapp.com/)
 
-Hosted using Render
+Hosted with Heroku
 
 ## Built With
 
