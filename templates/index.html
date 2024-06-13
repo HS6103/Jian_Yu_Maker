@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport", content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/CSS/style.css">
-    <title>簡語產生器</title>
-</head>
-<body>
-    <div id="main">
-        <div id="name">
-            <span id="title">簡語產生器</span>
-        </div>
-        <form id="input", method="post">
-            <br>
-            <label for="user_input">輸入任意四字詞語:</label>
-            <input type="text" id="user_input" name="user_input" required>
-            <br>
-            <br>
-            <a href=# id=process_input><button class='btn btn-default'>Submit</button></a>
-        </form>
-        <div id="result_label">
-          <span>你的簡語結果是:</span>
-        </div>
-        <div id="result"></div>
-        <div id="bottom_text">
-            <span id="credit">By <a href="https://github.com/HS6103">Simon HS.</a> @2024</span>
-        </div>
-    </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script type=text/javascript>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" , content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/CSS/style.css">
+  <title>簡語產生器</title>
+</head>
+
+<body>
+  <div id="main">
+    <div id="name">
+      <span id="title">簡語產生器</span>
+    </div>
+    <form id="input" , method="post">
+      <br>
+      <label for="user_input">輸入任意四字詞語:</label>
+      <input type="text" id="user_input" name="user_input" required>
+      <br>
+      <br>
+      <a href=# id=process_input><button class='btn btn-default'>Submit</button></a>
+    </form>
+    <div id="result_label">
+      <span>你的簡語結果是:</span>
+    </div>
+    <div id="result"></div>
+    <div id="bottom_text">
+      <span id="credit">By <a href="https://github.com/HS6103/Jian_Yu_Maker">Simon HS.</a> @2024</span>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script type=text/javascript>
         $(function() {
           $('a#process_input').bind('click', function() {
             $.post('/', {  
@@ -41,4 +43,5 @@
         });
     </script>
 </body>
+
 </html>
