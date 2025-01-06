@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- coding:utf-8 -*-
+
 import os
 from flask import Flask, request, render_template, jsonify
 from JianYuMaker import jianyu
